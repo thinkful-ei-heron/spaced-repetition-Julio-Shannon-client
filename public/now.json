@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "alias": "spaced-repetition-capstone",
+  "name": "spaced-repetition",
+  "routes": [
+    {
+      "src": "^/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": ".*",
+      "dest": "/index.html"
+    }
+  ]
+}
