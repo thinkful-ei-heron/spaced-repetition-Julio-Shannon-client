@@ -28,6 +28,7 @@ h2,
 }
 
 a {
+  text-decoration: none;
   color: rgb(85, 89, 42);
 }
 
@@ -37,6 +38,10 @@ a:hover {
 
 button:hover {
   background-color: rgb(163, 165, 80);
+}
+
+div[role='alert'] {
+  color: red;
 }
 /* 
 rgb(85,89,42)

@@ -189,11 +189,10 @@ describe(`User story: Login`, function() {
       })
     })
 
-    it(`displays my user name and presents the logout button`, () => {
+    it(`presents the logout button`, () => {
       cy.login().visit('/')
 
       cy.get('header').within($header => {
-        cy.contains('Test name of user').should('exist')
         cy.get('nav a')
           .should('have.length', 1)
           .and('have.text', 'Logout')

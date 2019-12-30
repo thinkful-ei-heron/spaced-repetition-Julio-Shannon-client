@@ -44,9 +44,7 @@ class RegistrationForm extends Component {
         className='RegistrationForm'
         onSubmit={this.handleSubmit}
       >
-        <div role='alert'>
-          {error && <p>{error}</p>}
-        </div>
+        
         <div>
           <Label htmlFor='registration-name-input'>
             Enter your name<Required />
@@ -78,6 +76,9 @@ class RegistrationForm extends Component {
             type='password'
             required
           />
+        </div>
+        <div role='alert'>
+          {error && <p>{error}</p>}
         </div>
         <footer className='registrationFooter'>
           <Button type='submit'>
