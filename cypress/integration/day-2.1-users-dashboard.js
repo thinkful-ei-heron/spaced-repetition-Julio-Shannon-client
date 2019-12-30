@@ -12,7 +12,7 @@
   - I'm given a button/link to start learning
   - I'm shown the total score for guessing words
 */
-describe(`User story: User's dashboard`, function() {
+describe(`User story: User's dashboard`, function () {
   beforeEach(() => {
     cy.server()
       .route({
@@ -40,20 +40,34 @@ describe(`User story: User's dashboard`, function() {
 
         cy.get('a')
           .should('have.attr', 'href', '/learn')
-          .and('have.text', 'Start practicing');
+          .and('have.text', 'Start Practicing');
 
-        cy.get('h3').should('have.text', 'Words to practice');
+        cy.get('h3.wordsHeader').should('have.text', 'Words to Practice');
       });
     });
   });
 
-  // it(`shows an LI and link for each language`, () => {
-  //   cy.wait('@languageRequest');
-  //   cy.fixture('language.json').then(({ words }) => {
-  //     words.forEach((word, idx) => {
-  //       cy.get('main section li').eq(idx);
-  //       cy.get('ul li:first').should('contain', word.original);
-  //     });
-  //   });
-  // });
-});
+  it(`shows an LI and link for each language`, () => {
+    cy.wait('@languageRequest');
+    cy.fixture('language.json').then(({ words }) => {
+      words.forEach((word, idx) => {
+        cy.get('main section .main_word').eq(idx).within($li => {
+
+          cy.get('h4').should('have.text', word.original)
+
+          cy.get('.scores > .correct')
+            .should(
+              'contain',
+              `Correct: ${word.correct_count}`
+            )
+          
+            cy.get('.scores > .incorrect')
+            .should(
+              'contain',
+              `Incorrect: ${word.incorrect_count}`
+            )
+        });
+      })
+    })
+  })
+})
