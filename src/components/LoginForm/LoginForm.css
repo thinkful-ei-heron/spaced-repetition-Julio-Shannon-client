@@ -1,8 +1,8 @@
-.RegistrationForm{
+.LoginForm {
   text-align: center;
 }
 
-.RegistrationForm input,
+.LoginForm input,
 button {
   display: block;
   border: 1px solid black;
@@ -14,11 +14,4 @@ button {
   font-size: 15px;
 }
 
-.registrationFooter > a {
-  text-decoration: none;
-  color:rgb(85,89,42);
-}
 
-.registrationFooter > a:hover{
-  color: rgb(163,165,80);
-}

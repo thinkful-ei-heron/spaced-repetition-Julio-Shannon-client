@@ -1,0 +1,50 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+}
+
+header {
+  background-image: url('https://images.pexels.com/photos/1144687/pexels-photo-1144687.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  background-size: cover;
+}
+
+main {
+  width: 80vw;
+  height: 80vh;
+  margin: 40px auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color:white;
+}
+
+h1,h2 {
+  Font-Family: 'Ubuntu', Sans-Serif;
+}
+
+h2, .appDescription {
+  padding-left: 20px;
+}
+
+a {
+  color: rgb(85,89,42);
+}
+
+a:hover {
+  color: rgb(163,165,80);
+}
+
+button:hover {
+  background-color: rgb(163,165,80);
+}
+/* 
+rgb(85,89,42)
+rgb(61,64,37)
+rgb(163,165,80)
+rgb(38,38,29)
+rgb(211,180,138)
+ */
+
+/* Font-Family: 'Ubuntu', Sans-Serif;
+Font-Size: 48px;
+Font-Family: 'Open Sans', Sans-Serif;
+Font-Size: 15px; */

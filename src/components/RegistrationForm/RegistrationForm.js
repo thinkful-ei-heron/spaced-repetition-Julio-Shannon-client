@@ -41,6 +41,7 @@ class RegistrationForm extends Component {
     const { error } = this.state
     return (
       <form
+        className='RegistrationForm'
         onSubmit={this.handleSubmit}
       >
         <div role='alert'>
@@ -78,7 +79,7 @@ class RegistrationForm extends Component {
             required
           />
         </div>
-        <footer>
+        <footer className='registrationFooter'>
           <Button type='submit'>
             Sign up
           </Button>
