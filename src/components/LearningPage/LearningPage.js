@@ -24,9 +24,10 @@ export default class LearningPage extends Component {
   };
 
   handleWrongAns = () => {
-    this.setState({
-      answer: 'wrong'
-    })
+    // this.setState({
+    //   answer: 'wrong'
+    // })
+    // this.handleFlip('wrong')
     return (
       <div className="Learn_Feedback">
         <h4>You Are Incorrect !</h4>
@@ -37,9 +38,10 @@ export default class LearningPage extends Component {
   };
 
   handleRightAns = () => {
-    this.setState({
-      answer: 'right'
-    })
+    // this.setState({
+    //   answer: 'right'
+    // })
+    // this.handleFlip('right')
     return (
       <div className="Learn_Feedback">
         <h4>You Are Correct !</h4>
@@ -51,12 +53,16 @@ export default class LearningPage extends Component {
 
   // handleFlip = (string) => {
   //   let element = document.getElementsByClassName('flip-card-back');
-  //   element.classList.add(string);
+  //   console.log(element);
+  //   console.log(element.length);
+  //   if(element.length !== 0){
+  //     element.classList.add(string);
+  //   }
   // }
 
   render() {
     let flipCard = this.state.flipped ? 'flip-card flipped' : 'flip-card';
-    let flipCardBack = this.state.answer ? `flip-card-back ${this.state.answer}` : 'flip-card-back';
+    //let flipCardBack = this.state.answer ? `flip-card-back ${this.state.answer}` : 'flip-card-back';
     return (
       <>
         <div className={flipCard}>
@@ -72,7 +78,7 @@ export default class LearningPage extends Component {
                 />
               </div>
             </div>
-            <div className={flipCardBack}>
+            <div className='flip-card-back'>
               <h1>Stats for this Word</h1>
               <p>Correct {this.context.currentWord && this.context.currentWord.wordCorrectCount} times</p>
               <p>Incorrect {this.context.currentWord && this.context.currentWord.wordIncorrectCount} times</p>
