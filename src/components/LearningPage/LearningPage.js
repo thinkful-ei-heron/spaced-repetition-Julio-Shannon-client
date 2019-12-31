@@ -9,18 +9,26 @@ export default class LearningPage extends Component {
     guess: null,
     answer: null,
     //original: this.context.currentWord ? this.context.currentWord.nextWord : null,
-    //answer: this.props.answer ? this.props.answer : 'star',
+    //answer: this.context.answer ? this.context.answer : 'star',
   };
 
   static contextType = UserContext;
 
   handleClick = e => {
     e.preventDefault();
+    let userInput = document.getElementById('learn-guess-input').value;
     this.setState({
       flipped: !this.state.flipped,
-      guess: document.getElementById('learn-guess-input').value.trim(),
+      guess: userInput.trim(),
     });
-    document.getElementById('learn-guess-input').value = '';
+    this.setState({
+      answer:
+        this.context.currentWord &&
+        userInput === this.context.currentWord.translation
+          ? 'right'
+          : 'wrong',
+    });
+    userInput = '';
   };
 
   handleWrongAns = () => {
@@ -31,7 +39,10 @@ export default class LearningPage extends Component {
     return (
       <div className="Learn_Feedback">
         <h3>You Are Incorrect !</h3>
-        <h4>The correct translation was {this.context.currentWord && this.context.currentWord.translation}</h4>
+        <h4>
+          The correct translation was{' '}
+          {this.context.currentWord && this.context.currentWord.translation}
+        </h4>
         <h4>You guessed {this.state.guess}</h4>
       </div>
     );
@@ -45,7 +56,10 @@ export default class LearningPage extends Component {
     return (
       <div className="Learn_Feedback">
         <h3>You Are Correct !</h3>
-        <h4>The correct translation was {this.context.currentWord && this.context.currentWord.translation}</h4>
+        <h4>
+          The correct translation was{' '}
+          {this.context.currentWord && this.context.currentWord.translation}
+        </h4>
         <h4>You guessed {this.state.guess}</h4>
       </div>
     );
@@ -62,39 +76,59 @@ export default class LearningPage extends Component {
 
   render() {
     let flipCard = this.state.flipped ? 'flip-card flipped' : 'flip-card';
-    //let flipCardBack = this.state.answer ? `flip-card-back ${this.state.answer}` : 'flip-card-back';
+    let flipCardBack = this.state.answer
+      ? `flip-card-back ${this.state.answer}`
+      : 'flip-card-back';
     return (
       <>
         <div className={flipCard}>
           <div className="flip-card-inner">
             <div className="flip-card-front">
               <h2>Translate the word:</h2>
-              <span>{this.context.currentWord && this.context.currentWord.nextWord}</span>
+              <span>
+                {this.context.currentWord && this.context.currentWord.nextWord}
+              </span>
               <div className="Learn_Input">
                 <form>
-                <label htmlFor="learn-guess-input">What's the translation for this word?</label>
-                <input
-                  placeholder="Input Translation"
-                  id="learn-guess-input"
-                  type= 'text'
-                  required
-                />
+                  <label htmlFor="learn-guess-input">
+                    What's the translation for this word?
+                  </label>
+                  <input
+                    placeholder="Input Translation"
+                    id="learn-guess-input"
+                    type="text"
+                    required
+                  />
                 </form>
                 {/* <p>Your total score is: {this.context.currentWord && this.context.currentWord.totalScore}</p>
                 <p>You have answered this word correctly {this.context.currentWord && this.context.currentWord.wordCorrectCount} times</p>
                 <p>You have answered this word incorrectly {this.context.currentWord && this.context.currentWord.wordIncorrectCount} times</p> */}
               </div>
             </div>
-            <div className='flip-card-back'>
-              {this.state.guess && this.state.guess === this.context.currentWord.translation
+            <div className={flipCardBack}>
+              {this.state.guess &&
+              this.state.guess === this.context.currentWord.translation
                 ? this.handleRightAns()
                 : this.handleWrongAns()}
-                
+
               <h3>Stats for this Word</h3>
-              <p>Correct {this.context.currentWord && this.context.currentWord.wordCorrectCount} times</p>
-              <p>Incorrect {this.context.currentWord && this.context.currentWord.wordIncorrectCount} times</p>
-              <p>Total Score: {this.context.currentWord && this.context.currentWord.totalScore} </p>
-              
+              <p>
+                Correct{' '}
+                {this.context.currentWord &&
+                  this.context.currentWord.wordCorrectCount}{' '}
+                times
+              </p>
+              <p>
+                Incorrect{' '}
+                {this.context.currentWord &&
+                  this.context.currentWord.wordIncorrectCount}{' '}
+                times
+              </p>
+              <p>
+                Total Score:{' '}
+                {this.context.currentWord &&
+                  this.context.currentWord.totalScore}{' '}
+              </p>
             </div>
           </div>
         </div>
