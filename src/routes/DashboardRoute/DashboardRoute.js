@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Dashboard from '../../components/Dashboard/Dashboard';
 import UserContext from '../../contexts/UserContext';
-import AuthApiService from '../../services/auth-api-service';
+import LanguageApiService from '../../services/language-api-service';
 
 class DashboardRoute extends Component {
   static defaultProps = {
@@ -13,7 +13,7 @@ class DashboardRoute extends Component {
   static contextType = UserContext;
 
   componentDidMount(){
-    AuthApiService.fetchDashboard().then(res => {
+    LanguageApiService.fetchDashboard().then(res => {
       if(res.error === 'Unauthorized request'){
         this.context.processLogout();
         this.props.history.push('/login');

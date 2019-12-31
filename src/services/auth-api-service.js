@@ -34,16 +34,6 @@ const AuthApiService = {
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
-  fetchDashboard() {
-    return fetch(`${config.API_ENDPOINT}/language`, {
-      method: 'GET',
-      headers: {
-        authorization: `Bearer ${TokenService.getAuthToken()}`,
-      },
-    }).then(res => res.json()
-      // !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-    )
-  },
 };
 
 export default AuthApiService;

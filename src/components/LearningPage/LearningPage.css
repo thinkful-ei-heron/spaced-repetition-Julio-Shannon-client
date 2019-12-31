@@ -66,3 +66,11 @@ input {
   color: white;
   transform: rotateY(180deg);
 }
+
+.wrong {
+  background-color:red;
+}
+
+.right {
+  background-color: rgb(34, 85, 63);
+}
