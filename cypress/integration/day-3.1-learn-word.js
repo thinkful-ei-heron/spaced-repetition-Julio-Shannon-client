@@ -31,16 +31,16 @@ describe(`User story: Presented with word`, function() {
     cy.fixture('language-head.json')
       .then(languageHeadFixture => {
         cy.get('main').within($main => {
-          cy.get('h2')
+          cy.get('h2.translateHeader')
             .should('have.text', 'Translate the word:')
             .siblings('span')
             .should('have.text', languageHeadFixture.nextWord)
         })
-        // cy.get('p').eq(0)
-        //   .should(
-        //     'have.text',
-        //     `Your total score is: ${languageHeadFixture.totalScore}`,
-        //   )
+        cy.get('p').eq(0)
+          .should(
+            'have.text',
+            `Your total score is: ${languageHeadFixture.totalScore}`,
+          )
       })
   })
 
@@ -49,7 +49,7 @@ describe(`User story: Presented with word`, function() {
       .visit(`/learn`)
       .wait('@languageHeadRequest')
 
-    cy.get('button[type=submit]')
+    cy.get('button[type=submit].submitAnswer')
         .should('have.text', 'Submit')
 
     cy.get('main form').within($form => {
@@ -71,15 +71,17 @@ describe(`User story: Presented with word`, function() {
 
     cy.fixture('language-head.json').then(languageHeadFixture => {
       cy.get('main').within($main => {
-        // cy.get('flip-card-back')
-        //   .should(
-        //     'contain',
-        //     `You have answered this word correctly ${languageHeadFixture.wordCorrectCount} times.`,
-        //   )
-        //   .and(
-        //     'contain',
-        //     `You have answered this word incorrectly ${languageHeadFixture.wordIncorrectCount} times.`,
-        //   )
+        cy.get('.Learn_Input p.correctCount')
+          .should(
+            'contain.text',
+            `You have answered this word correctly ${languageHeadFixture.wordCorrectCount} times.`,
+          )
+
+          cy.get('.Learn_Input p.incorrectCount')
+          .should(
+            'contain.text',
+            `You have answered this word incorrectly ${languageHeadFixture.wordIncorrectCount} times.`,
+          )
       })
     })
   })

@@ -44,7 +44,7 @@ describe(`User story: Answer feedback`, function() {
       cy.get('main form').within($form => {
         cy.get('input#learn-guess-input').type(guess);
       });
-      cy.get('button').click();
+      cy.get('button.submitAnswer').click();
 
       cy.wait('@postListGuess').then(xhr => {
         expect(xhr.request.body).to.eql({ guess });
@@ -67,8 +67,7 @@ describe(`User story: Answer feedback`, function() {
         .visit(`/learn`)
         .wait('@languageHeadRequest');
       cy.get('input#learn-guess-input').type(guess);
-      cy.get('form').submit();
-      //.wait('@postListGuessIncorrect');
+      cy.get('form').submit().wait('@postListGuessIncorrect');
     });
 
     it(`displays score and feedback the word was incorrect`, () => {
@@ -96,7 +95,7 @@ describe(`User story: Answer feedback`, function() {
             'have.text',
             `The correct translation for ${languageHeadFixture.nextWord} was ${incorrectFixture.answer} and you chose ${guess}!`
           );
-          cy.get('button').should('have.text', `Try another word!`);
+          cy.get('button.nextQuestion').should('have.text', `Try another word!`);
         });
       });
     });
@@ -136,12 +135,12 @@ describe(`User story: Answer feedback`, function() {
             'have.text',
             `Total Score: ${incorrectFixture.totalScore}`
           );
-          cy.get('h2').should('have.text', `You were correct! :D`);
-          cy.get('.DisplayFeedback p').should(
+          cy.get('h2.correct').should('have.text', `You were correct! :D`);
+          cy.get('.Learn_Feedback p').should(
             'have.text',
             `The correct translation for ${languageHeadFixture.nextWord} was ${incorrectFixture.answer} and you chose ${guess}!`
           );
-          cy.get('button').should('have.text', `Try another word!`);
+          cy.get('button.nextQuestion').should('have.text', `Try another word!`);
         });
       });
     });

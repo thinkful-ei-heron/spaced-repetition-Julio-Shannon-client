@@ -45,7 +45,7 @@ export default class LearningPage extends Component {
           The correct translation for{' '}
           {this.context.currentWord && this.context.currentWord.nextWord} was{' '}
           {this.context.currentResult && this.context.currentResult.answer} and
-          you chose {this.state.guess}
+          you chose {this.state.guess}!
         </p>
       </div>
     );
@@ -54,12 +54,12 @@ export default class LearningPage extends Component {
   handleRightAns = () => {
     return (
       <div className="Learn_Feedback">
-        <h2>You Are Correct !</h2>
+        <h2 className='correct'>You were correct! :D</h2>
         <p>
           The correct translation for{' '}
           {this.context.currentWord && this.context.currentWord.nextWord} was{' '}
           {this.context.currentResult && this.context.currentResult.answer} and
-          you chose {this.state.guess}
+          you chose {this.state.guess}!
         </p>
       </div>
     );
@@ -77,12 +77,12 @@ export default class LearningPage extends Component {
         <div className={flipCard}>
           <div className="flip-card-inner">
             <div className="flip-card-front">
-              <h2>Translate the word:</h2>
+              <h2 className='translateHeader'>Translate the word:</h2>
               <span>
-                {this.context.currentWord && this.context.currentWord.nextWord}
+                {this.context.currentResult ? this.context.currentResult.nextWord : this.context.currentWord && this.context.currentWord.nextWord}
               </span>
               <div className="Learn_Input">
-                <form>
+                <form onSubmit={e => this.handleClick(e)}>
                   <label htmlFor="learn-guess-input">
                     What's the translation for this word?
                   </label>
@@ -91,11 +91,14 @@ export default class LearningPage extends Component {
                     id="learn-guess-input"
                     type="text"
                     required
-                  />
+                  /> 
+                  <Button type="submit" className='submitAnswer'>
+                    Submit
+                  </Button>
                 </form>
-                {/* <p>Your total score is: {this.context.currentWord && this.context.currentWord.totalScore}</p>
-                <p>You have answered this word correctly {this.context.currentWord && this.context.currentWord.wordCorrectCount} times</p>
-                <p>You have answered this word incorrectly {this.context.currentWord && this.context.currentWord.wordIncorrectCount} times</p> */}
+                <p>Your total score is: {this.context.currentResult ? this.context.currentResult.totalScore : this.context.currentWord && this.context.currentWord.totalScore}</p>
+                <p className='correctCount'> You have answered this word correctly {this.context.currentWord && this.context.currentWord.wordCorrectCount} times. </p>
+                <p className='incorrectCount'>You have answered this word incorrectly {this.context.currentWord && this.context.currentWord.wordIncorrectCount} times.</p>
               </div>
             </div>
             <div className={flipCardBack}>
@@ -103,6 +106,9 @@ export default class LearningPage extends Component {
               this.context.currentResult.isCorrect
                 ? this.handleRightAns()
                 : this.handleWrongAns()}
+                <Button className='nextQuestion' type="submit" onClick={e => this.handleClick(e)}>
+                    Try another word!
+                </Button>
               <div className="stats">
                 <h3>Stats for this Word</h3>
                 <p>
@@ -120,20 +126,19 @@ export default class LearningPage extends Component {
                 <div className="DisplayScore">
                   <p>
                     Total Score:{' '}
-                    {this.context.currentWord &&
+                    {this.context.currentResult && this.context.currentResult.totalScore}
+                    {/* {this.context.currentWord &&
                       (this.context.currentResult &&
                       this.context.currentResult.isCorrect
                         ? this.context.currentWord.totalScore + 1
-                        : this.context.currentWord.totalScore)}
+                        : this.context.currentWord.totalScore)} */}
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <Button type="submit" onClick={e => this.handleClick(e)}>
-          {this.state.flipped ? 'Next Question' : 'Submit'}
-        </Button>
+       
       </>
     );
   }

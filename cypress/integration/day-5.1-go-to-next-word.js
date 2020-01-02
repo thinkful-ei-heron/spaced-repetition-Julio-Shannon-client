@@ -32,7 +32,7 @@ describe(`User story: Go to next word`, function() {
   })
 
   it(`displays another word after clicking the 'next' button`, () => {
-    cy.get('main button').click()
+    cy.get('main button.submitAnswer').click()
 
     cy.fixture('language-guess-generic.json')
       .then(languageHeadFixture => {
@@ -42,7 +42,7 @@ describe(`User story: Go to next word`, function() {
               'have.text',
               `Your total score is: ${languageHeadFixture.totalScore}`,
             )
-          cy.get('h2')
+          cy.get('h2.translateHeader')
             .should('have.text', 'Translate the word:')
             .siblings('span')
             .should('have.text', languageHeadFixture.nextWord)
@@ -57,8 +57,8 @@ describe(`User story: Go to next word`, function() {
         .should('have.attr', 'type', 'text')
         .and('have.attr', 'required', 'required')
 
-      cy.get('button[type=submit]')
-        .should('have.text', 'Submit your answer')
+      cy.get('button[type=submit].submitAnswer')
+        .should('have.text', 'Submit')
     })
   })
 })
