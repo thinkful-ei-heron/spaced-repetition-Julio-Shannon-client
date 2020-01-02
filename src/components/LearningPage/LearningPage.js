@@ -37,7 +37,6 @@ export default class LearningPage extends Component {
   };
 
   handleWrongAns = () => {
-    console.log(this.context, this.state);
     return (
       <div className="Learn_Feedback">
         <h2>Good try, but not quite right :(</h2>

@@ -1,5 +1,8 @@
 .LoginForm {
   text-align: center;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .LoginForm input,
@@ -14,4 +17,7 @@ button {
   font-size: 15px;
 }
 
+fieldset {
+  border: none;
+}
 

@@ -55,6 +55,7 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 10px;
 }
 
 .flip-card-front {
@@ -79,4 +80,12 @@ input {
 
 .right {
   background-color: rgb(34, 85, 63);
+}
+
+.Learn_Input > p {
+font-size: 0.7rem;
+padding: 0.5px;
+margin:0;
+text-align: left;
+display:none;
 }
