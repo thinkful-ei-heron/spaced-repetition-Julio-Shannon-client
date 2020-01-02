@@ -86,6 +86,15 @@ export class UserProvider extends Component {
     this.setState({ currentResult });
   };
 
+  incrementTotalScore = () => {
+    this.setState({
+      currentWord: {
+        ...this.state.currentWord,
+        totalScore: this.state.currentWord.totalScore + 1,
+      },
+    });
+  };
+
   processLogin = authToken => {
     TokenService.saveAuthToken(authToken);
     const jwtPayload = TokenService.parseAuthToken();
@@ -141,6 +150,7 @@ export class UserProvider extends Component {
       setWords: this.setWords,
       setLanguage: this.setLanguage,
       setCurrentWord: this.setCurrentWord,
+      incrementTotalScore: this.incrementTotalScore,
       setCurrentResult: this.setCurrentResult,
       processLogin: this.processLogin,
       processLogout: this.processLogout,

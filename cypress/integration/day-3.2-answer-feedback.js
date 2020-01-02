@@ -68,7 +68,7 @@ describe(`User story: Answer feedback`, function() {
         .wait('@languageHeadRequest');
       cy.get('input#learn-guess-input').type(guess);
       cy.get('form').submit();
-      // .wait('@postListGuessIncorrect');
+      //.wait('@postListGuessIncorrect');
     });
 
     it(`displays score and feedback the word was incorrect`, () => {
@@ -83,14 +83,16 @@ describe(`User story: Answer feedback`, function() {
           .then(langGuessIncFx => fixtures.push(langGuessIncFx)),
       ]).then(() => {
         const [languageHeadFixture, incorrectFixture] = fixtures;
-        cy.get('button').click();
         cy.get('main').within($main => {
           cy.get('.DisplayScore p').should(
             'have.text',
             `Total Score: ${incorrectFixture.totalScore}`
           );
-          cy.get('h2').should('have.text', `Good try, but not quite right :(`);
-          cy.get('.DisplayFeedback p').should(
+          cy.get('.Learn_Feedback h2').should(
+            'have.text',
+            `Good try, but not quite right :(`
+          );
+          cy.get('.Learn_Feedback p').should(
             'have.text',
             `The correct translation for ${languageHeadFixture.nextWord} was ${incorrectFixture.answer} and you chose ${guess}!`
           );
@@ -128,7 +130,7 @@ describe(`User story: Answer feedback`, function() {
         cy.fixture('language-guess-correct.json').then(fx => fixtures.push(fx)),
       ]).then(() => {
         const [languageHeadFixture, incorrectFixture] = fixtures;
-        cy.get('button').click();
+
         cy.get('main').within($main => {
           cy.get('.DisplayScore p').should(
             'have.text',

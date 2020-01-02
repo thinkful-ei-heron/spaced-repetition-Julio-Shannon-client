@@ -13,8 +13,9 @@ input {
   background-color: transparent;
   perspective: 1000px;
   width: 50vw;
-  max-width: 500px;
+  max-width: 350px;
   height: 60vh;
+  min-height: 450px;
   display: flex;
   flex-direction: column;
   margin: 5vh auto;
@@ -53,11 +54,11 @@ input {
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .flip-card-front {
-  background-color: darkgrey;
+  background-color: lightgrey;
   color: black;
 }
 
@@ -66,9 +67,14 @@ input {
   color: white;
   transform: rotateY(180deg);
 }
+.stats {
+  border-top: 3px solid grey;
+  width: 75%;
+  margin: 0 auto;
+}
 
 .wrong {
-  background-color: red;
+  background-color: maroon;
 }
 
 .right {

@@ -13,8 +13,7 @@ main {
   max-width: 1000px;
   /* height: 80vh; */
   margin: 40px auto;
-  border: 1.5px solid black;
-  border-radius: 5px;
+
   background-color: white;
 }
 

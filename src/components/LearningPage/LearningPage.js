@@ -26,7 +26,6 @@ export default class LearningPage extends Component {
     } else {
       LanguageApiService.postListGuess({ guess: userInput.trim() }).then(
         res => {
-          console.log(res);
           this.context.setCurrentResult(res);
           this.setState({
             guess: userInput.trim(),
@@ -38,14 +37,16 @@ export default class LearningPage extends Component {
   };
 
   handleWrongAns = () => {
+    console.log(this.context, this.state);
     return (
       <div className="Learn_Feedback">
-        <h3>You Are Incorrect !</h3>
-        <h4>
-          The correct translation was{' '}
-          {this.context.currentResult && this.context.currentResult.answer}
-        </h4>
-        <h4>You guessed {this.state.guess}</h4>
+        <h2>Good try, but not quite right :(</h2>
+        <p>
+          The correct translation for{' '}
+          {this.context.currentWord && this.context.currentWord.nextWord} was{' '}
+          {this.context.currentResult && this.context.currentResult.answer} and
+          you chose {this.state.guess}
+        </p>
       </div>
     );
   };
@@ -53,12 +54,13 @@ export default class LearningPage extends Component {
   handleRightAns = () => {
     return (
       <div className="Learn_Feedback">
-        <h3>You Are Correct !</h3>
-        <h4>
-          The correct translation was{' '}
-          {this.context.currentResult && this.context.currentResult.answer}
-        </h4>
-        <h4>You guessed {this.state.guess}</h4>
+        <h2>You Are Correct !</h2>
+        <p>
+          The correct translation for{' '}
+          {this.context.currentWord && this.context.currentWord.nextWord} was{' '}
+          {this.context.currentResult && this.context.currentResult.answer} and
+          you chose {this.state.guess}
+        </p>
       </div>
     );
   };
@@ -101,25 +103,31 @@ export default class LearningPage extends Component {
               this.context.currentResult.isCorrect
                 ? this.handleRightAns()
                 : this.handleWrongAns()}
-
-              <h3>Stats for this Word</h3>
-              <p>
-                Correct{' '}
-                {this.context.currentResult &&
-                  this.context.currentResult.wordCorrectCount}{' '}
-                times
-              </p>
-              <p>
-                Incorrect{' '}
-                {this.context.currentResult &&
-                  this.context.currentResult.wordIncorrectCount}{' '}
-                times
-              </p>
-              <p className="DisplayScore">
-                Total Score:{' '}
-                {this.context.currentResult &&
-                  this.context.currentResult.totalScore}{' '}
-              </p>
+              <div className="stats">
+                <h3>Stats for this Word</h3>
+                <p>
+                  Correct{' '}
+                  {this.context.currentResult &&
+                    this.context.currentResult.wordCorrectCount}{' '}
+                  times
+                </p>
+                <p>
+                  Incorrect{' '}
+                  {this.context.currentResult &&
+                    this.context.currentResult.wordIncorrectCount}{' '}
+                  times
+                </p>
+                <div className="DisplayScore">
+                  <p>
+                    Total Score:{' '}
+                    {this.context.currentWord &&
+                      (this.context.currentResult &&
+                      this.context.currentResult.isCorrect
+                        ? this.context.currentWord.totalScore + 1
+                        : this.context.currentWord.totalScore)}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
