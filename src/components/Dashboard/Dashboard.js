@@ -25,9 +25,9 @@ export default class Dashboard extends Component {
     return (
       <div className="Dashboard_Container">
         <h2>{this.context.language && this.context.language.name}</h2>
-        <Link to="/learn">
-          <Button>Start Practicing</Button>
-        </Link>
+        
+          <Button><Link to="/learn">Start Practicing</Link></Button>
+        
         <section>
           <h3>
             Total Correct Answers:{' '}

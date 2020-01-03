@@ -95,6 +95,8 @@ export default class LearningPage extends Component {
                     Submit
                   </Button>
                 </form>
+                {/* the following p elements are not currently displayed on the font of the card 
+                in order to give the front of the card a cleaner look. Remove display:none from the css file to display. */}
                 <p>Your total score is: {this.context.currentResult ? this.context.currentResult.totalScore : this.context.currentWord && this.context.currentWord.totalScore}</p>
                 <p className='correctCount'> You have answered this word correctly {this.context.currentWord && this.context.currentWord.wordCorrectCount} times. </p>
                 <p className='incorrectCount'>You have answered this word incorrectly {this.context.currentWord && this.context.currentWord.wordIncorrectCount} times.</p>
