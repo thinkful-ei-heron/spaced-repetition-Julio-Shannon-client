@@ -1,47 +1,28 @@
-# Spaced Repetition Capstone
+# Spaced Repetition Capstone Client
+## Created By: Julio Hernandez & Shannon Lichtenwalter
 
-## Setup
+### Links
+See it Live: https://spaced-repetition-julio-shannon-client.now.sh/
+Client Repo: https://github.com/thinkful-ei-heron/spaced-repetition-Julio-Shannon-client
+Server Repo: https://github.com/thinkful-ei-heron/spaced-repetition-Julio-Shannon-server
 
-To setup the application
+### Introduction
+This application is a platform for learning French through the technique of spaced repetition to help with memorization. With this application the user can create an account and login. They can see a dashboard to view their learning progress. The user is able to 'Start Practicing' where they will be given a French word that they must type in the translation for. The user will be notified if their answer is correct or incorrect. The user will see their updated scores. The user can then move on to practicing more words. Happy Learning!
 
-1. Fork and clone the project to your machine
-2. `npm install`. This will also install the application *Cypress.io* for running browser integration tests
+### Technology Stack
+The front-end client for this application was created using HTML, CSS, Javascript and React. It is deployed using Zeit. The front-end client is intended to interact with a server that is deployed via Heroku.
 
-The project expects you have the Spaced repetition API project setup and running on http://localhost:8000.
 
-Find instructions to setup the API here https://github.com/Thinkful-Ed/spaced-repetition-api.
+### Screenshots
 
-## Running project
+##### Login Page
+  ![LoginPage](./src/images/loginPage.png)
 
-This is a `create-react-app` project so `npm start` will start the project in development mode with hot reloading by default.
+##### Dashboard Page
+  ![DashboardPage](./src/images/DashboardPage.png)
 
-## Running the tests
+##### Learning Page
+  ![LearningPage](./src/images/learningPage.png)
 
-This project uses [Cypress IO](https://docs.cypress.io) for integration testing using the Chrome browser.
-
-Cypress has the following expectations:
-
-- You have cypress installed (this is a devDependency of the project)
-- You have your application running at http://localhost:3000.
-  - You can change the address of this expectation in the `./cypress.json` file.
-- Your `./src/config.js` is using http://localhost:8000/api as the `API_ENDPOINT`
-
-To start the tests run the command:
-
-```bash
-npm run cypress:open
-```
-
-On the first run of this command, the cypress application will verify its install. Any other runs after this, the verification will be skipped.
-
-The command will open up the Cypress application which reads tests from the `./cypress/integration/` directory. You can then run individual tests by clicking on the file names or run all tests by clicking the "run all tests" button in the cypress GUI.
-
-Tests will assert against your running localhost client application.
-
-You can also start all of the tests in the command line only (not using the GUI) by running the command:
-
-```bash
-npm run cypress:run
-```
-
-This will save video recordings of the test runs in the directory `./cypress/videos/`.
+  ##### answer Page
+  ![answerPage](./src/images/answerPage.png)
