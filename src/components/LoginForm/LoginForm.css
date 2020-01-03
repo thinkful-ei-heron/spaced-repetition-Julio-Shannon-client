@@ -1,6 +1,7 @@
 .LoginForm {
   text-align: center;
   border: 1px solid grey;
+  max-width: 600px;
   border-radius: 5px;
   padding: 10px;
 }
@@ -14,10 +15,10 @@ button {
   padding-left: 5px;
   height: 40px;
   width: 30vw;
+  max-width: 300px;
   font-size: 15px;
 }
 
 fieldset {
   border: none;
 }
-

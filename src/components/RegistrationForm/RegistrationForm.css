@@ -1,6 +1,7 @@
-.RegistrationForm{
+.RegistrationForm {
   text-align: center;
   border: 1px solid grey;
+  max-width: 600px;
   border-radius: 5px;
   padding: 10px;
 }
@@ -12,6 +13,7 @@ button {
   border-radius: 10px;
   margin: 20px auto;
   padding-left: 5px;
+  max-width: 300px;
   height: 40px;
   width: 30vw;
   font-size: 15px;
@@ -19,9 +21,9 @@ button {
 
 .registrationFooter > a {
   text-decoration: none;
-  color:rgb(85,89,42);
+  color: rgb(85, 89, 42);
 }
 
-.registrationFooter > a:hover{
-  color: rgb(163,165,80);
+.registrationFooter > a:hover {
+  color: rgb(163, 165, 80);
 }
