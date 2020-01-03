@@ -7,18 +7,19 @@ class DashboardRoute extends Component {
   static defaultProps = {
     location: {},
     history: {
-      push: () => {},
-    },
+      push: () => {}
+    }
   };
   static contextType = UserContext;
 
-  componentDidMount(){
+  componentDidMount() {
     LanguageApiService.fetchDashboard().then(res => {
-      if(res.error === 'Unauthorized request'){
+      if (res.error === 'Unauthorized request') {
         this.context.processLogout();
         this.props.history.push('/login');
-      } if(res.error){
-        Promise.reject(res)
+      }
+      if (res.error) {
+        Promise.reject(res);
       }
       this.context.setWords(res.words);
       this.context.setLanguage(res.language);
@@ -26,8 +27,8 @@ class DashboardRoute extends Component {
   }
   render() {
     return (
-      <section>
-        <h2>Hello, {this.context.user.name}</h2>
+      <section aria-live="polite">
+        <h2 aria-label="Welcome">Hello, {this.context.user.name}</h2>
         <Dashboard />
       </section>
     );

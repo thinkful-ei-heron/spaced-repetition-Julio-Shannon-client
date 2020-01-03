@@ -9,7 +9,7 @@ export default class LearningPage extends Component {
     flipped: false,
     guess: null,
     answer: null,
-    currentResults: null,
+    currentResults: null
   };
 
   static contextType = UserContext;
@@ -29,7 +29,7 @@ export default class LearningPage extends Component {
           this.context.setCurrentResult(res);
           this.setState({
             guess: userInput.trim(),
-            flipped: !this.state.flipped,
+            flipped: !this.state.flipped
           });
         }
       );
@@ -38,7 +38,7 @@ export default class LearningPage extends Component {
 
   handleWrongAns = () => {
     return (
-      <div className="Learn_Feedback">
+      <div className="Learn_Feedback" aria-live="polite">
         <h2>Good try, but not quite right :(</h2>
         <p>
           The correct translation for{' '}
@@ -52,8 +52,8 @@ export default class LearningPage extends Component {
 
   handleRightAns = () => {
     return (
-      <div className="Learn_Feedback">
-        <h2 className='correct'>You were correct! :D</h2>
+      <div className="Learn_Feedback" aria-live="polite">
+        <h2 className="correct">You were correct! :D</h2>
         <p>
           The correct translation for{' '}
           {this.context.currentWord && this.context.currentWord.nextWord} was{' '}
@@ -76,9 +76,12 @@ export default class LearningPage extends Component {
         <div className={flipCard}>
           <div className="flip-card-inner">
             <div className="flip-card-front">
-              <h2 className='translateHeader'>Translate the word:</h2>
+              <h2 className="translateHeader">Translate the word:</h2>
               <span>
-                {this.context.currentResult ? this.context.currentResult.nextWord : this.context.currentWord && this.context.currentWord.nextWord}
+                {this.context.currentResult
+                  ? this.context.currentResult.nextWord
+                  : this.context.currentWord &&
+                    this.context.currentWord.nextWord}
               </span>
               <div className="Learn_Input">
                 <form onSubmit={e => this.handleClick(e)}>
@@ -90,29 +93,52 @@ export default class LearningPage extends Component {
                       placeholder="Input Translation"
                       id="learn-guess-input"
                       type="text"
+                      aria-label="Translation Input"
+                      aria-required="true"
                       required
-                    /> 
+                    />
                   </fieldset>
-                  <Button type="submit" className='submitAnswer'>
+                  <Button type="submit" className="submitAnswer">
                     Submit
                   </Button>
                 </form>
                 {/* the following p elements are not currently displayed on the font of the card 
                 in order to give the front of the card a cleaner look. Remove display:none from the css file to display. */}
-                <p>Your total score is: {this.context.currentResult ? this.context.currentResult.totalScore : this.context.currentWord && this.context.currentWord.totalScore}</p>
-                <p className='correctCount'> You have answered this word correctly {this.context.currentWord && this.context.currentWord.wordCorrectCount} times. </p>
-                <p className='incorrectCount'>You have answered this word incorrectly {this.context.currentWord && this.context.currentWord.wordIncorrectCount} times.</p>
+                <p>
+                  Your total score is:{' '}
+                  {this.context.currentResult
+                    ? this.context.currentResult.totalScore
+                    : this.context.currentWord &&
+                      this.context.currentWord.totalScore}
+                </p>
+                <p className="correctCount">
+                  {' '}
+                  You have answered this word correctly{' '}
+                  {this.context.currentWord &&
+                    this.context.currentWord.wordCorrectCount}{' '}
+                  times.{' '}
+                </p>
+                <p className="incorrectCount">
+                  You have answered this word incorrectly{' '}
+                  {this.context.currentWord &&
+                    this.context.currentWord.wordIncorrectCount}{' '}
+                  times.
+                </p>
               </div>
             </div>
-            <div className={flipCardBack}>
+            <div className={flipCardBack} aria-live="polite">
               {this.context.currentResult &&
               this.context.currentResult.isCorrect
                 ? this.handleRightAns()
                 : this.handleWrongAns()}
-                <Button className='nextQuestion' type="submit" onClick={e => this.handleClick(e)}>
-                    Try another word!
-                </Button>
-              <div className="stats">
+              <Button
+                className="nextQuestion"
+                type="submit"
+                onClick={e => this.handleClick(e)}
+              >
+                Try another word!
+              </Button>
+              <div className="stats" aria-live="polite">
                 <h3>Stats for this Word</h3>
                 <p>
                   Correct{' '}
@@ -129,19 +155,14 @@ export default class LearningPage extends Component {
                 <div className="DisplayScore">
                   <p>
                     Total Score:{' '}
-                    {this.context.currentResult && this.context.currentResult.totalScore}
-                    {/* {this.context.currentWord &&
-                      (this.context.currentResult &&
-                      this.context.currentResult.isCorrect
-                        ? this.context.currentWord.totalScore + 1
-                        : this.context.currentWord.totalScore)} */}
+                    {this.context.currentResult &&
+                      this.context.currentResult.totalScore}
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-       
       </>
     );
   }

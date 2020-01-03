@@ -7,7 +7,7 @@ import './LoginForm.css';
 
 class LoginForm extends Component {
   static defaultProps = {
-    onLoginSuccess: () => {},
+    onLoginSuccess: () => {}
   };
 
   static contextType = UserContext;
@@ -24,7 +24,7 @@ class LoginForm extends Component {
 
     AuthApiService.postLogin({
       username: username.value,
-      password: password.value,
+      password: password.value
     })
       .then(res => {
         username.value = '';
@@ -50,6 +50,8 @@ class LoginForm extends Component {
           <Input
             ref={this.firstInput}
             id="login-username-input"
+            aria-label="Username"
+            aria-required="true"
             name="username"
             required
           />
@@ -59,6 +61,8 @@ class LoginForm extends Component {
           <Input
             id="login-password-input"
             name="password"
+            aria-label="Password"
+            aria-required="true"
             type="password"
             required
           />

@@ -4,16 +4,20 @@
 }
 
 header {
-  background-image: url('https://images.pexels.com/photos/1144687/pexels-photo-1144687.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  background-image: url('../../images//green.jpg');
   background-size: cover;
+  background-position: center;
+}
+
+.RegistrationForm input,
+.LoginForm input {
+  min-width: 150px;
 }
 
 main {
   width: 80vw;
   max-width: 1000px;
-  /* height: 80vh; */
   margin: 40px auto;
-
   background-color: white;
 }
 
@@ -22,8 +26,7 @@ h2 {
   font-family: 'Ubuntu', Sans-Serif;
 }
 
-h2,
-.appDescription {
+.appDescription h2 {
   padding-left: 20px;
 }
 
@@ -43,6 +46,18 @@ button:hover {
 div[role='alert'] {
   color: red;
 }
+@media only screen and (min-width: 300px) {
+  /* main {
+    font-size: 0.7rem;
+  } */
+}
+
+@media only screen and (min-width: 700px) {
+  main {
+    width: 50vw;
+  }
+}
+
 /* 
 rgb(85,89,42)
 rgb(61,64,37)

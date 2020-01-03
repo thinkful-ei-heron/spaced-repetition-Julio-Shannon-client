@@ -12,7 +12,7 @@ input {
 .flip-card {
   background-color: transparent;
   perspective: 1000px;
-  width: 50vw;
+  width: 80vw;
   max-width: 350px;
   height: 60vh;
   min-height: 450px;
@@ -28,7 +28,7 @@ input {
   text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 15px 15px rgba(0, 0, 0, 0.2);
   display: block;
 }
 .flip-card-inner label {
@@ -62,6 +62,9 @@ input {
   background-color: lightgrey;
   color: black;
 }
+.flip-card-front input {
+  width: 100px;
+}
 
 .flip-card-back {
   background-color: rgb(34, 85, 63);
@@ -83,9 +86,24 @@ input {
 }
 
 .Learn_Input > p {
-font-size: 0.7rem;
-padding: 0.5px;
-margin:0;
-text-align: left;
-display:none;
+  font-size: 0.7rem;
+  padding: 0.5px;
+  margin: 0;
+  text-align: left;
+  display: none;
+}
+@media only screen and (min-width: 500px) {
+  .flip-card {
+    width: 70vw;
+  }
+}
+@media only screen and (min-width: 700px) {
+  .flip-card {
+    width: 60vw;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .flip-card {
+    width: 50vw;
+  }
 }
