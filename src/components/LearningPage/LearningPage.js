@@ -126,6 +126,7 @@ export default class LearningPage extends Component {
                 </p>
               </div>
             </div>
+
             <div className={flipCardBack} aria-live="polite">
               {this.context.currentResult &&
               this.context.currentResult.isCorrect

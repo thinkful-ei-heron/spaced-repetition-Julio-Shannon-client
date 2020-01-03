@@ -36,11 +36,12 @@ a {
 }
 
 a:hover {
-  color: rgb(163, 165, 80);
+  color: black;
 }
 
 button:hover {
   background-color: rgb(163, 165, 80);
+  color: black;
 }
 
 div[role='alert'] {

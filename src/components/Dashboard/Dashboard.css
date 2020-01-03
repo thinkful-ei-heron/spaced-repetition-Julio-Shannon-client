@@ -8,3 +8,12 @@
   height: 45vh;
   overflow: auto;
 }
+.Language_Header {
+  /* display: flex;
+  justify-content: space-between; */
+  text-align: center;
+  color: rgb(61, 64, 37);
+}
+.Dashboard_Container a {
+  color: black;
+}

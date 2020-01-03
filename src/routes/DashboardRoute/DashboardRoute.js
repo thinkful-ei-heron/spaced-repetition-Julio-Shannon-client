@@ -28,7 +28,7 @@ class DashboardRoute extends Component {
   render() {
     return (
       <section aria-live="polite">
-        <h2 aria-label="Welcome">Hello, {this.context.user.name}</h2>
+        {/* <h2 aria-label="Welcome">Hello, {this.context.user.name}</h2> */}
         <Dashboard />
       </section>
     );

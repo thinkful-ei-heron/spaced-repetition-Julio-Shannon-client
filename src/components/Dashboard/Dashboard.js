@@ -24,10 +24,17 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div className="Dashboard_Container">
-        <h2>{this.context.language && this.context.language.name}</h2>
-        
-          <Button><Link to="/learn">Start Practicing</Link></Button>
-        
+        <div>
+          <h2 aria-label="Welcome">Hello, {this.context.user.name}</h2>
+          <h2 className="Language_Header">
+            Learn {this.context.language && this.context.language.name}
+          </h2>
+        </div>
+
+        <Button>
+          <Link to="/learn">Start Practicing</Link>
+        </Button>
+
         <section>
           <h3>
             Total Correct Answers:{' '}
