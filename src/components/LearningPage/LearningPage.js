@@ -82,15 +82,17 @@ export default class LearningPage extends Component {
               </span>
               <div className="Learn_Input">
                 <form onSubmit={e => this.handleClick(e)}>
-                  <label htmlFor="learn-guess-input">
-                    What's the translation for this word?
-                  </label>
-                  <input
-                    placeholder="Input Translation"
-                    id="learn-guess-input"
-                    type="text"
-                    required
-                  /> 
+                  <fieldset>
+                    <label htmlFor="learn-guess-input">
+                      What's the translation for this word?
+                    </label>
+                    <input
+                      placeholder="Input Translation"
+                      id="learn-guess-input"
+                      type="text"
+                      required
+                    /> 
+                  </fieldset>
                   <Button type="submit" className='submitAnswer'>
                     Submit
                   </Button>
