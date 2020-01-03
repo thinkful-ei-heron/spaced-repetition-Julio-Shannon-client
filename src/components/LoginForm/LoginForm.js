@@ -51,6 +51,7 @@ class LoginForm extends Component {
             ref={this.firstInput}
             id="login-username-input"
             aria-label="Username"
+            autoComplete="username"
             aria-required="true"
             name="username"
             required
@@ -62,6 +63,7 @@ class LoginForm extends Component {
             id="login-password-input"
             name="password"
             aria-label="Password"
+            autoComplete="password"
             aria-required="true"
             type="password"
             required
