@@ -14,11 +14,18 @@ header {
   min-width: 150px;
 }
 
+section {
+  justify-content: center;
+  align-content: center;
+  margin: 0;
+}
+
 main {
   width: 80vw;
   max-width: 1000px;
   margin: 40px auto;
   background-color: white;
+  justify-content: center;
 }
 
 h1,
